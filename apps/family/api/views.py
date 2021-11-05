@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -11,6 +12,7 @@ from apps.family.api.serializers import FamilySerializer
 
 class FamilyViewSet(viewsets.ModelViewSet):
 
+    authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = FamilySerializer
 

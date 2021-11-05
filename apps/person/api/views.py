@@ -5,12 +5,14 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
 
 from django.core.exceptions import ObjectDoesNotExist
 
 
 class PersonViewSet(viewsets.ModelViewSet):
 
+    authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = PersonSerializer
 
@@ -50,6 +52,7 @@ class PersonViewSet(viewsets.ModelViewSet):
 
     def update(self, request, *args, **kwargs):
         """Fully updates a Person."""
+        import ipdb; ipdb.set_trace()
         partial = kwargs.pop("partial", False)
         person = self.get_object()
         serializer = self.get_serializer(person, data=request.data, partial=partial)

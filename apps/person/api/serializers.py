@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 class PersonSerializer(serializers.ModelSerializer):
-    # family_id = serializers.IntegerField()
+    family_id = serializers.IntegerField()
 
     class Meta:
         model = Person
